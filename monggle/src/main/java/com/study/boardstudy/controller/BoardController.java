@@ -37,12 +37,12 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public ListResponse boardList(@RequestParam(value = "page", defaultValue = "1") int page, String searchKeyword) { // Model은 데이터를 담아서 페이지로 보내주기 위해 사용.
+    public ListResponse boardList(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "query", defaultValue = "") String searchKeyword) { // Model은 데이터를 담아서 페이지로 보내주기 위해 사용.
         Pageable pageable = PageRequest.of(page - 1, 13, Sort.Direction.DESC, "idx");
 
         Page<Board> list = null;
 
-        if(searchKeyword == null) {
+        if(searchKeyword == null || searchKeyword.equals("")) {
             list = boardService.boardList(pageable);
         } else {
             list = boardService.boardSearchList(searchKeyword, pageable);
