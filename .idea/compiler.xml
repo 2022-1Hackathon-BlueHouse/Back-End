@@ -10,5 +10,10 @@
         <module name="board-study.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="board-study" target="1.8" />
+      <module name="board-study.main" target="1.8" />
+      <module name="board-study.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
